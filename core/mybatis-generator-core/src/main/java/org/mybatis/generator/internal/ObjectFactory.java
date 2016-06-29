@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -43,7 +43,6 @@ import org.mybatis.generator.config.JavaTypeResolverConfiguration;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.config.TableConfiguration;
 import org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl;
-import org.mybatis.generator.internal.util.StringUtility;
 
 /**
  * This class creates the different objects needed by the generator.
@@ -117,7 +116,6 @@ public class ObjectFactory {
                 return clazz;
             } catch (Throwable e) {
                 // ignore - fail safe below
-                ;
             }
         }
         
@@ -314,7 +312,7 @@ public class ObjectFactory {
      */
     public static JavaFormatter createJavaFormatter(Context context) {
         String type = context.getProperty(PropertyRegistry.CONTEXT_JAVA_FORMATTER);
-        if (!StringUtility.stringHasValue(type)) {
+        if (!stringHasValue(type)) {
             type = DefaultJavaFormatter.class.getName();
         }
 
@@ -334,7 +332,7 @@ public class ObjectFactory {
      */
     public static XmlFormatter createXmlFormatter(Context context) {
         String type = context.getProperty(PropertyRegistry.CONTEXT_XML_FORMATTER);
-        if (!StringUtility.stringHasValue(type)) {
+        if (!stringHasValue(type)) {
             type = DefaultXmlFormatter.class.getName();
         }
 

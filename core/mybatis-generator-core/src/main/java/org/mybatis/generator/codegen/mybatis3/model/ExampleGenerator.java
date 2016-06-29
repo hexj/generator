@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -195,9 +195,9 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         topLevelClass
                 .addInnerClass(getGeneratedCriteriaInnerClass(topLevelClass));
 
-        topLevelClass.addInnerClass(getCriteriaInnerClass(topLevelClass));
+        topLevelClass.addInnerClass(getCriteriaInnerClass());
 
-        topLevelClass.addInnerClass(getCriterionInnerClass(topLevelClass));
+        topLevelClass.addInnerClass(getCriterionInnerClass());
 
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
         if (context.getPlugins().modelExampleClassGenerated(
@@ -207,7 +207,7 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         return answer;
     }
 
-    private InnerClass getCriterionInnerClass(TopLevelClass topLevelClass) {
+    private InnerClass getCriterionInnerClass() {
         Field field;
         Method method;
 
@@ -354,7 +354,7 @@ public class ExampleGenerator extends AbstractJavaGenerator {
         return answer;
     }
 
-    private InnerClass getCriteriaInnerClass(TopLevelClass topLevelClass) {
+    private InnerClass getCriteriaInnerClass() {
         Method method;
 
         InnerClass answer = new InnerClass(FullyQualifiedJavaType

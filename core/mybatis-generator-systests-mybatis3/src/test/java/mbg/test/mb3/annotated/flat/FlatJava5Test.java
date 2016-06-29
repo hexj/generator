@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -2125,6 +2125,10 @@ public class FlatJava5Test extends AbstractAnnotatedFlatTest {
             record.setId7(7);
             record.setSecondFirstName("fred2");
             record.setThirdFirstName("fred3");
+            
+            record.setActive(true);
+            record.setActive1(Boolean.FALSE);
+            record.setActive2(new byte[]{-128, 127});
 
             mapper.insert(record);
             Integer generatedCustomerId = record.getCustomerId();
@@ -2149,6 +2153,13 @@ public class FlatJava5Test extends AbstractAnnotatedFlatTest {
                     .getSecondFirstName());
             assertEquals(record.getThirdFirstName(), returnedRecord
                     .getThirdFirstName());
+            assertTrue(returnedRecord.isActive());
+            assertFalse(returnedRecord.getActive1().booleanValue());
+            assertEquals(3, returnedRecord.getActive2().length);
+            assertEquals(-128, returnedRecord.getActive2()[0]);
+            assertEquals(127, returnedRecord.getActive2()[1]);
+            assertEquals(0, returnedRecord.getActive2()[2]);
+            
         } finally {
             sqlSession.close();
         }

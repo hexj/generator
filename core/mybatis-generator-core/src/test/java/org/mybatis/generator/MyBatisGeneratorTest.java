@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ public class MyBatisGeneratorTest {
         
         try {
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, shellCallback, warnings);
-            myBatisGenerator.generate(null);
+            myBatisGenerator.generate(null, null, null, false);
         } catch (InvalidConfigurationException e) {
             assertEquals(2, e.getErrors().size());
             throw e;
@@ -56,7 +56,7 @@ public class MyBatisGeneratorTest {
         
         try {
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, shellCallback, warnings);
-            myBatisGenerator.generate(null);
+            myBatisGenerator.generate(null, null, null, false);
         } catch (InvalidConfigurationException e) {
             assertEquals(1, e.getErrors().size());
             throw e;

@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -55,10 +55,18 @@ public class ConditionalModelRules extends BaseRules {
      * @return true if the class should be generated
      */
     public boolean generateBaseRecordClass() {
-        return introspectedTable.getBaseColumns().size() > 0
+        return introspectedTable.hasBaseColumns()
                 || introspectedTable.getPrimaryKeyColumns().size() == 1
-                || (introspectedTable.getBLOBColumns().size() > 0 && !generateRecordWithBLOBsClass());
-
+                || blobsAreInBaseRecord();
+    }
+    
+    /**
+     * Blobs will be in the base record class if there is only one blob column
+     * 
+     * @return true if there are blobs but they are in the base record class
+     */
+    private boolean blobsAreInBaseRecord() {
+        return introspectedTable.hasBLOBColumns() && !generateRecordWithBLOBsClass();
     }
 
     /**

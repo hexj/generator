@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -162,10 +162,8 @@ public class XmlFileMergerJaxp {
         for (int i = 0; i < length; i++) {
             Node node = children.item(i);
             // don't add the last node if it is only white space
-            if (i == length - 1) {
-                if (isWhiteSpace(node)) {
-                    break;
-                }
+            if (i == length - 1 && isWhiteSpace(node)) {
+                break;
             }
 
             Node newNode = existingDocument.importNode(node, true);

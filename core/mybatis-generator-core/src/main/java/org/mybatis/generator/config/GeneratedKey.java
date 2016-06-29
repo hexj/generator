@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -172,11 +172,9 @@ public class GeneratedKey {
                     tableName));
         }
 
-        if (stringHasValue(type)) {
-            if (!"pre".equals(type) && !"post".equals(type)) { //$NON-NLS-1$ //$NON-NLS-2$
-                errors.add(getString("ValidationError.15", //$NON-NLS-1$
-                        tableName));
-            }
+        if (stringHasValue(type) &&
+                !"pre".equals(type) && !"post".equals(type)) { //$NON-NLS-1$ //$NON-NLS-2$
+            errors.add(getString("ValidationError.15", tableName)); //$NON-NLS-1$
         }
         
         if ("pre".equals(type) && isIdentity) { //$NON-NLS-1$

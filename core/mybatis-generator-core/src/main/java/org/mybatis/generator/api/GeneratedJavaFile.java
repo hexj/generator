@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@ public class GeneratedJavaFile extends GeneratedFile {
      */
     @Override
     public String getFileName() {
-        return compilationUnit.getType().getShortName() + ".java"; //$NON-NLS-1$
+        return compilationUnit.getType().getShortNameWithoutTypeArguments() + ".java"; //$NON-NLS-1$
     }
 
     /* (non-Javadoc)

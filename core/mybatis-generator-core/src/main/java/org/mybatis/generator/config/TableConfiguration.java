@@ -1,5 +1,5 @@
 /**
- *    Copyright 2006-2015 the original author or authors.
+ *    Copyright 2006-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -799,18 +799,17 @@ public class TableConfiguration extends PropertyHolder {
             generatedKey.validate(errors, fqTableName);
         }
 
-        if (isTrue(getProperty(PropertyRegistry.TABLE_USE_COLUMN_INDEXES))) {
-            // when using column indexes, either both or neither query ids
-            // should be set
-            if (selectByExampleStatementEnabled
-                    && selectByPrimaryKeyStatementEnabled) {
-                boolean queryId1Set = stringHasValue(selectByExampleQueryId);
-                boolean queryId2Set = stringHasValue(selectByPrimaryKeyQueryId);
+        // when using column indexes, either both or neither query ids
+        // should be set
+        if (isTrue(getProperty(PropertyRegistry.TABLE_USE_COLUMN_INDEXES))
+                && selectByExampleStatementEnabled
+                && selectByPrimaryKeyStatementEnabled) {
+            boolean queryId1Set = stringHasValue(selectByExampleQueryId);
+            boolean queryId2Set = stringHasValue(selectByPrimaryKeyQueryId);
 
-                if (queryId1Set != queryId2Set) {
-                    errors.add(getString("ValidationError.13", //$NON-NLS-1$
-                            fqTableName));
-                }
+            if (queryId1Set != queryId2Set) {
+                errors.add(getString("ValidationError.13", //$NON-NLS-1$
+                        fqTableName));
             }
         }
 
